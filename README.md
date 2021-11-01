@@ -1,3 +1,6 @@
+Firsttly Unzip node_modules.zip into the node_modules folder
+node_modules.zip loctated in the node_modules folder
+
 ## Fras
 A Payment Gateway built with Vanilla Node.js and MongoDB as a School Coursework
 
