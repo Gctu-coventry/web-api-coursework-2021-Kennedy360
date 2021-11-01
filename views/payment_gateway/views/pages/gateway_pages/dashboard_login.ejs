@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fras - Login</title>
+    <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+</head>
+<body>
+    <main>
+    <section id="login-body">
+    <div class="login flex browser-center">
+        <form name="login-form" enctype="application/x-www-form-urlencoded" id="login-form">
+            <p>
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" placeholder="Username" name="username" class="login-username" id="login-username">
+            </p>
+            <p>
+            <label for="password">Password:</label>
+            <br>
+            <input type="password" placeholder="***********" name="password" class="login-password" id="login-password">
+            </p>
+            <p>
+                <input type="submit" value="Login" id="login-btn" name="user_login">
+            </p>
+
+        </form>
+    </div>
+    </section>
+    </main>
+
+    <!-- Scipts -->
+    <script>
+
+        var form_submit = document.getElementById("login-form");
+        form_submit.onsubmit = function(e){
+        e.preventDefault();
+        authenticate();
+    };
+    function authenticate(){
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+    
+            const authData = {
+                username:username,
+                password:password    
+            };
+            
+            
+    
+            fetch("http://localhost:5000/fras/login/authenticate",{
+               method: "POST",
+               body: JSON.stringify(authData),
+               headers: {
+                   "Content-Type" : "application/json"
+               }
+           })
+           .then((res) => res.json()).then((data) => {
+               if(data.message === "User Exist"){
+                   document.cookie = "User=FrasUser";
+                   window.location = "http://localhost:5000/fras/payments";
+               }else{
+                    alert("Wrong Credentials");
+               }
+           });
+        }
+       </script>
+</body>
+</html>

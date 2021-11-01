@@ -1,0 +1,13 @@
+{
+    "student_id": 50918024,
+    "depositor_name": "Saviour Kennedy",
+    "depositor_email": "saviourkenny@gmail.com",
+    "card_number": 4242424242424242,
+    "payment_method": "card",
+    "card_expiry_month": 5,
+    "card_expiry_year": 22,
+    "card_cvv": 345,
+    "amount": 2000,
+    "currency": "Ghc",
+    "phone_number": 554513648
+  }

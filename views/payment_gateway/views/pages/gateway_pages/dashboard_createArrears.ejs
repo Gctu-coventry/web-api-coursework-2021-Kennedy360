@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fras - Create Arrear</title>
+    <link rel="stylesheet" type="text/css" href="../../css/gateway.css">
+    <script src="../../js/cookie.js"></script>
+</head>
+<body>
+    <section class="org-body">
+        <aside>
+            <section>
+                <div class="org-sidebar">
+                    <header>
+                        <h2 id="org-sidebar-header">Fras</h2>
+                    </header>
+                    <ul>
+                        <li><a href="http://localhost:5000/fras/payments">Payments</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears">Arrears</a></li>
+                        <li><a href="http://localhost:5000/fras/transactions">Transactions</a></li>
+                        <li><a href="http://localhost:5000/fras/refunds">Refunds</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears-create">Create Arrear</a></li>
+                        <li id="logout">Logout</li>
+                    </ul>
+                </div>
+            </section>
+        </aside>
+        <main>
+            <section class="content">
+            <div class="content-body">
+                    <header>
+                        <h1 id="content-body-title">Create Student Arrear</h1>
+                    </header>
+                    <div class="content-body-contents">
+                        <form enctype="application/x-www-form-urlencoded" id="create_arrear_form">
+                            <label for="create_arrear_name" id="add-event-label">Student's Name</label> <br>
+                            <input type="text" name="create_arrear_name" placeholder="Name of Student" id="arrear-name">
+                            <br>
+                            <label for="create_arrear_id" id="add-event-label">Student's ID</label> <br>
+                            <input type="text" name="create_arrear_id" placeholder="Student ID" id="arrear-id" required>
+                            <br>
+                            <label for="create_arrear_class" id="add-event-label">Student's Class</label> <br>
+                            <input type="text" name="create_arrear_class" placeholder="Class of Student" id="arrear-class">
+                            <br>
+                            <label for="create_arrear_course" id="add-event-label">Programme</label> <br>
+                            <input type="text" name="create_arrear_course" placeholder="Programme Student is reading" id="arrear-course">
+                            <br>
+                            <label for="create_arrear_fees" id="add-event-label">Fees Owed</label><br>
+                            <input type="number" name="create_arrear_fees" placeholder="GHC 0.00" id="arrear-fees" min="0" value="0">
+                            <br>
+                            <input type="submit" value="Create Student Arrear" name="create_arrear_submit" id="add-event-submit">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+
+
+    <!-- Scipts -->
+    <script>
+
+    var form_submit = document.getElementById("create_arrear_form");
+    form_submit.onsubmit = function(e){
+    e.preventDefault();
+    createArrear();
+};
+function createArrear(){
+        const name = document.getElementById("arrear-name").value;
+        const id = document.getElementById("arrear-id").value;
+        const classes = document.getElementById("arrear-class").value;
+        const programme = document.getElementById("arrear-course").value;
+        const fees = document.getElementById("arrear-fees").value;
+
+        const arrearData = {
+            student_id:id, 
+            student_name:name,
+            student_class: classes,
+            student_course: programme,
+            fees_owed: fees};
+        
+        
+
+        fetch("http://localhost:5000/api/v1/arrears",{
+           method: "POST",
+           body: JSON.stringify(arrearData),
+           headers: {
+               "Content-Type" : "application/json",
+               "Authentication": "Basic U2F2aW91cjpGcmFz"
+           },
+           redirect: 'follow',
+           mode: "cors"
+           
+       })
+       .then((res) => res.json()).then((data) => {console.log(data)});
+    }
+   </script>
+</body>
+</html>

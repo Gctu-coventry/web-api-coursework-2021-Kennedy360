@@ -1,0 +1,388 @@
+:root{
+    --body-color: #fafafa;
+    --shadow-value: 0px 1px 10px 9px rgba(0,0,10,.03);
+    --shadow-value2: 0 16px 64px -16px rgba(46,55,77,.32);
+    --default-container-padding: 32px;
+    --medium-text-color: rgb(117, 117, 117);
+    --medium-body-color: rgb(41, 41, 41);
+    --box-shadow-perfect: 0 10px 70px -5px rgba(25,37,52,.14),0 2px 5px rgba(25,37,52,.03),0 1px 0 rgba(25,37,52,.04);
+}
+html{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+hr{
+    border-color: white;
+    padding: 0px;
+}
+
+body{
+    padding: 0px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* Navigation menu */
+nav{
+    height: auto;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    color: black;
+    font-weight: 900;
+    z-index: 300;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 2px 3px 2px 4px rgba(225,225,225,.25);
+
+}
+
+.nav-toggle{
+    position: relative;
+    margin-left: 60px;
+    min-width: 150px;
+    padding: 20px;
+}
+
+#toggleButton{
+    display:none;
+    height: 30px;
+    background-color: rgba(0,0,10,.03);
+    border: 1px solid rgb(228, 221, 221);
+}
+
+#logo{
+    line-height: 30px;
+    color: #000;
+    font-size: 1.5rem;
+}
+
+.nav-drop{
+    width: 100%;
+    padding: 12px;    
+    margin-left: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-drop ul li{
+    display: inline-block;
+    margin-right: 52px;
+    transition: display 2s ease-in;
+}
+
+.nav-drop ul li:last-child{
+    margin-right: 0px;
+}
+
+@media screen and (max-width: 846px){
+    nav{
+        display: block;
+        margin:0px;
+    }
+    #toggleButton{
+        display: block;
+        float: right;
+        margin-top: 0px;
+    }
+    .nav-drop{
+        margin-left: 0px;
+    }
+    .nav-drop ul li{
+        display: block;
+        margin-bottom: 25px;
+        padding: 6px;
+    }
+}
+
+
+
+/* Hero Section */
+.hero{
+    height: 605px;
+    width: 100%;
+    background-size: 100% 100%;    
+    background: url("../../image/books.jpg");
+    background-color: rgba(12, 18, 26, .53);
+    background-blend-mode: overlay;
+    position: relative;
+    display: flex;
+    color: white;
+
+}
+
+.hero-info{
+    height: 300px;
+    max-width: 60%;
+    background-color: transparent;
+    position: relative;
+    top: 12rem;
+    left: 4vw;
+    padding: 12px;
+}
+
+#hero-info-button{
+    padding: 20px;
+    width: 150px;
+    background-color: black;
+    border: 0px;
+    color: white;
+    border-radius: 4px;
+    font-size: calc(1vw);
+    font-weight: bold;
+}
+
+.hero-info header > h1{
+    font-size: calc(1vw + 32px);
+}
+
+.student_section h1{
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+.student_section{
+    color: rgba(0, 0, 0, 0.877);
+    padding: 40px;
+    width: 50%;
+
+}
+.section_text{
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.877);
+    background-blend-mode: overlay;
+}
+
+#payfees{
+    background-color: rgb(212, 23, 23);
+    padding: 15px;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+/* Events */
+.events{
+    height: auto;
+    font-family: cursive;
+    z-index: 0;
+}
+
+#events-title{
+    font-size: calc(1vw + 26px);
+    color: var(--medium-body-color);
+}
+.events-card-container{
+    height: auto;
+}
+#events-card{
+    height: 350px;
+    min-width: 200px;
+    width: 300px;
+    row-gap: 2px;
+    margin: 12px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 1px 50px 9px rgba(225,225,225,.25);
+}
+
+.events-card-header{
+    height: 55%;
+    width: 100%;
+    padding: 0px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+.events-card-header img{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.events-card-footer{
+    height: 45%;
+    width: 100%;
+    padding: 12px;
+}
+.events-card-footer p:first-child{
+    font-weight: bold;
+}
+.events-card-footer p{
+    margin: 10px;
+}
+
+#events-card-footer-button-container{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#events-card-footer-button{
+    width: 70%;
+    height: 42px;
+    border-radius: 2px;
+    border:0px;
+    background-color: #000;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+.more{
+    padding: 10px;
+    text-align: right;
+}
+.more a{
+    color: rgb(24, 24, 24);
+    text-decoration: underline;
+}
+
+
+/* Fees Payment Section */
+.fess-payment-info{
+    height: auto;
+    padding: var(--default-container-padding);
+    font-family: cursive;
+    background-color: rebeccapurple;
+    color: white;
+}
+.fess-payment-info-container{
+    height: auto;
+    padding: 27px;
+    text-align: center;
+}
+
+.fess-payment-info header > h1{
+    font-size: 3em;;
+}
+
+#fess-payment-info-button{
+    padding: 15px;
+    width: 200px;
+    color: #000;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0px;
+    background-color: white;
+    box-shadow: var(--shadow-value2);
+}
+
+
+
+
+
+/* Footer */
+footer{
+    padding: 12px;
+    background-color: rgba(240, 236, 236, 0.44);
+    display: block;
+    color: var(--medium-text-color);
+    text-align: center;
+}
+footer li{
+    list-style-type: none;
+}
+
+footer h3{
+    color: rgb(32, 30, 30);
+}
+
+
+.sub-footer-social-networks{
+    display: flex;
+    width: 50vw;
+    justify-content: center;
+    align-items: right;
+}
+
+.sub-footer-social-networks ul li{
+    display: inline-block;
+    margin: 0px 10px;
+}
+
+/* Login Page */
+#login-body{
+    height: 100vh;
+    width: 100vw;
+    background-color: white;
+}
+.login,.resetpassword{
+    background-color: white;
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px 20px 50px 20px;
+    border-radius: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-shadow: var(--shadow-value);
+}
+
+#login-logo{
+    display: block;
+    height: 100px;
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.login-username,
+.login-password,
+.password-reset
+{
+    width: 300px;
+    height: 48px;
+    padding: 10px;
+    caret-color: red;
+    color: gray;
+    border: 1px solid rgb(218, 210, 210);
+    border-radius: 5px;
+    margin-top: 6px;
+}
+#login-btn,
+#reset-btn
+{
+    margin-top: 12px;
+    width: 300px;
+    height: 45px;
+    background-color: black;
+    font-size: 17px;
+    border-radius: 6px;
+    border:0px;
+    margin-top: 20px;
+    color: white;
+}
+
+
+
+
+/* Commons */
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browser-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Element Globals */
+a{
+    text-decoration: none;
+}
+input{
+    outline: none;
+}

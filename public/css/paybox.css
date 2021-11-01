@@ -1,0 +1,116 @@
+:root{
+
+}
+
+*,
+*::before,
+*::after{
+    padding: 0px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.paybox-container{
+    background-color: #ffffff;
+    padding: 32px;
+    background-blend-mode: overlay;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paybox{
+    background-color: #ffffff;
+    min-width: 450px;
+    box-shadow: 2px 2px 13px 15px rgba(10, 10, 10, 0.06);
+    border-radius: 2px;
+    display: flex;
+}
+
+.payment_sidebar{
+    min-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url("../../image/blaise.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(10, 10, 10, 10);
+    background-blend-mode: overlay;
+    padding: 50px;
+    color: white;
+}
+
+.payment_sidebar h1{
+    font-size: 3.0rem;
+}
+
+.paybox-pay{
+    border-radius: 14px;
+    padding: 50px;
+}
+
+.paybox header{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.paybox input{
+    margin: 12px 0px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    padding: 14px;
+}
+
+#paybox-card-number,
+#paybox-card-cvv,
+#paybox-amount,
+#paybox-email,
+#paybox-student-id,
+#paybox-payer,
+#paybox-phonenumber{
+    width: 400px;
+    background-color:rgba(160, 56, 56, 0.06);
+}
+
+.paybox-card-expiry{
+    /* background-color: red; */
+    display: flex;
+    width: 400px;
+}
+
+.paybox-card-expiry-month{
+}
+.paybox-card-expiry-year{
+    height: 100%;
+}
+
+#paybox-card-expiry-month{
+    width: 200px;
+    border-right: 0px;
+    border-radius: 3px 0px 0px 3px;
+}
+#paybox-card-expiry-year{
+    width: 200px;
+    border-radius: 0px 3px 3px 0px;
+}
+
+.paybox-card-details{
+    width: 400px;
+    /* background-color: rebeccapurple; */
+    display: flex;
+    justify-content: center;
+}
+
+#paybox-card-details{
+    background-color: rgb(189, 12, 12);
+    color: #ffffff;
+    width: 200px;
+    border: 0px;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+}

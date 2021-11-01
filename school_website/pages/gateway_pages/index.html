@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <script>
+        // fetch("http://localhost:5000/api/v1/transactions",{
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type":"application/json"
+        //     }
+        // }).then(res => res.json())
+        // .then(data => {
+        //     console.log(data);
+        //     console.log(data.length);
+        //     console.log(data[0]["payment_method"])
+        // })
+
+        const data = {
+    "student_id" : 50919034,
+    "depositor_name" : "Susuassey David Da",
+    "depositor_email" : "susuasseymarvelousguy@gmail.com",
+    "recipient_name" : "Amazing Love School",
+    "payment_option" : ["card","momo"],
+    "payment_method" : "card",
+    "amount" : 200,
+    "currency" : "Ghc",
+    "card_number" : 4242424242424242,
+    "card_expiry_month" : 10,
+    "card_expiry_year" : 21,
+    "card_cvv" : 543,
+    "phone_number" : 50918034,
+    "redirect_url" : "www.google.com"
+}
+
+        fetch("http://localhost:5000/api/v1/payments",{
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type":"application/json"
+            }
+        }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+            // console.log(data.length);
+            // console.log(data[0]["payment_method"])
+        })
+    </script>
+</body>
+</html>

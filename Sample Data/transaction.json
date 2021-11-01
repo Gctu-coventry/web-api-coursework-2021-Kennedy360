@@ -1,0 +1,11 @@
+{
+    "transaction_type" : "Fees Payment",
+    "customer_name" : "Saviour Kennedy",
+    "customer_phoneNumber" : 554513648,
+    "customer_email" : "saviourkenny@gmail.com",
+    "item_bought" : ["rice","plantain"],
+    "student_id" : 50919024,
+    "amount" : 200,
+    "currency" : "Ghc",
+    "payment_method" : "card"
+}

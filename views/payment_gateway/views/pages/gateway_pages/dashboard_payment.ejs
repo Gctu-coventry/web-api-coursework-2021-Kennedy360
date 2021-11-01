@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fras - Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../../css/gateway.css">
+    <script src="../../js/cookie.js"></script>
+</head>
+<body>
+    <section class="org-body">
+        <aside>
+            <section>
+                <div class="org-sidebar">
+                    <header>
+                        <h2 id="org-sidebar-header">Fras</h2>
+                    </header>
+                    <ul>
+                        <li><a href="http://localhost:5000/fras/payments">Payments</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears">Arrears</a></li>
+                        <li><a href="http://localhost:5000/fras/transactions">Transactions</a></li>
+                        <li><a href="http://localhost:5000/fras/refunds">Refunds</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears-create">Create Arrear</a></li>
+                        <li id="logout">Logout</li>
+                    </ul>
+                </div>
+            </section>
+        </aside>
+        <main>
+            <section class="content">
+                <div class="content-body">
+                    <header>
+                        <h1 id="content-body-title">Payments</h1>
+                    </header>
+                    <div class="content-body-contents">
+                       <table id="view-event">
+                           <tr id="view-event-head">
+                               <th>Ref.</th>
+                               <th>Student ID</th>
+                               <th>Name</th>
+                               <th>Tel</th>
+                               <th>Amount</th>
+                               <th>Method</th>
+                               <th>Status</th>
+                               <th>Date</th>
+                           </tr>
+                       </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+
+    <script>
+            fetch("http://localhost:5000/api/v1/payments",{
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json",
+                "Authentication": "Basic U2F2aW91cjpGcmFz"
+            },
+            redirect: 'follow',
+            mode: "cors"
+            
+        })
+        .then((res) => res.json()).then((data) => { 
+            let payment_data = document.getElementById("view-event");
+            console.log(data);
+            data.forEach(payment => {
+                payment_data.innerHTML += `<tr>
+                    <td>${payment.reference}</td>
+                            <td>${payment.student_id}</td>
+                            <td>${payment.depositor_name}</td>
+                            <td>${payment.phone_number}</td>
+                            <td>Ghc ${payment.amount}</td>
+                            <td>${payment.payment_method}</td>
+                            <td>${payment.status}</td>
+                            <td>${payment.created}</td>
+                    </tr>`;
+            });
+        })
+    </script>
+</body>
+</html>

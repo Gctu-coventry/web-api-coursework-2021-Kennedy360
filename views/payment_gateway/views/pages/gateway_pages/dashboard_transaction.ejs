@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fras - Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="../../css/gateway.css">
+    <script src="../../js/cookie.js"></script>
+</head>
+<body>
+    <section class="org-body">
+        <aside>
+            <section>
+                <div class="org-sidebar">
+                    <header>
+                        <h2 id="org-sidebar-header">Fras</h2>
+                    </header>
+                    <ul>
+                    <li><a href="http://localhost:5000/fras/payments">Payments</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears">Arrears</a></li>
+                        <li><a href="http://localhost:5000/fras/transactions">Transactions</a></li>
+                        <li><a href="http://localhost:5000/fras/refunds">Refunds</a></li>
+                        <li><a href="http://localhost:5000/fras/arrears-create">Create Arrear</a></li>
+                        <li id="logout">Logout</li>
+                    </ul>
+                </div>
+            </section>
+        </aside>
+        <main>
+            <section class="content">
+                <div class="content-body">
+                    <header>
+                        <h1 id="content-body-title">Transactions</h1>
+                        <hr>
+                    </header>
+                    <div class="content-body-contents">
+                       <table id="view-event">
+                           <tr id="view-event-head">
+                               <th>Reference</th>
+                               <th>Type</th>
+                               <th>Transaction Brief</th>
+                               <th>Payment Method</th>
+                               <th>Status</th>
+                               <th>Date</th>
+                               <th>Refund Status</th>
+                           </tr>
+                       </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </section>
+    <script>
+        function refund(reference,amount,currency){
+            const refund_data = {transaction_reference: reference, amount: amount, currency: currency};
+                fetch("http://localhost:5000/api/v1/refunds",{
+                method: "POST",
+                body: JSON.stringify(refund_data),
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Authentication": "Basic U2F2aW91cjpGcmFz"
+                }
+            }).then((res) => res.text()).then(data => console.log(data))
+        }
+        fetch("http://localhost:5000/api/v1/transactions",{
+            method: "GET",
+            headers: {
+                "Content-Type" : "application/json",
+                "Authentication": "Basic U2F2aW91cjpGcmFz"
+            },
+            redirect: 'follow',
+            mode: "cors"
+            
+        })
+        .then((res) => res.json()).then((data) => { 
+            let transaction_data = document.getElementById("view-event");
+            console.log(data);
+            data.forEach(transaction => {
+                const ref = `${transaction.reference}`;
+                transaction_data.innerHTML += `<tr>
+                    <td>${transaction.reference}</td>
+                            <td>${transaction.transaction_type}</td>
+                            <td>Ghc ${transaction.amount} from ${transaction.customer_phoneNumber}</td>
+                            <td>${transaction.payment_method}</td>
+                            <td>${transaction.status}</td>
+                            <td>${transaction.created}</td>
+                            
+                            <td>${transaction.refund_status == "Refunded" ? `Refunded` : `<input type="button" value="Refund" id="refund-action" onClick="refund('${transaction.reference}',${transaction.amount},'${transaction.currency}')"`}
+                                
+                           
+                    </tr>`;
+    
+        })
+
+        }).catch(err => console.log(err));
+
+    </script>
+</body>
+</html>

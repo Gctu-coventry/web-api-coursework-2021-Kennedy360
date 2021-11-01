@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adel - Payment</title>
+    <link rel="stylesheet" href="../../css/paybox.css" />
+  </head>
+  <body>
+    <main>
+      <div class="paybox-container">
+        <div class="paybox">
+            <div class="payment_sidebar">
+                <h1>Adel High School</h1>
+                <br>
+                <p>Pay your own or Kid's School fees with ease</p>
+            </div>
+            <div class="paybox-pay">
+                <form id="paybox" method="POST" enctype="application/x-www-form-urlencoded">
+                    <p>
+                        <label for="paybox-email">Student ID:</label>
+                        <br>
+                        <input type="text" placeholder="Student ID" id="paybox-student-id" name="paybox-student-id" required>
+                    </p>
+                    <p>
+                        <label for="paybox-email">Payer's Name</label>
+                        <br>
+                        <input type="text" placeholder="Name of Payer" id="paybox-payer" name="paybox-payer" required>
+                    </p>
+                    <p>
+                        <label for="paybox-email">Phone Number:</label>
+                        <br>
+                        <input type="tel" placeholder="Phone number" id="paybox-phonenumber" name="paybox-phonenumber">
+                    </p>
+                    <p>
+                        <label for="paybox-amount">Amount:</label>
+                        <br>
+                        <input type="text" placeholder="Amount to Pay" id="paybox-amount" name="paybox-amount" required>
+                    </p>
+                    <p>
+                        <label for="paybox-card-number">Card Number</label>
+                        <br>
+                        <input type="text" name="paybox-card-number" id="paybox-card-number" placeholder="Please Enter Your Card" required>
+                    </p>
+                    <p>
+                        <div class="paybox-card-expiry">
+                            <div class="paybox-card-expiry-month">
+                                <label for="paybox-card-expiry-month">Exp. month</label><br>
+                                <input type="text" id="paybox-card-expiry-month" placeholder="expiry month" max="2" required>
+                            </div>
+                            <div class="playbox-card-expiry-year">
+                                <label for="playbox-card-expiry-year">Exp. Year</label><br>
+                                <input type="text" id="paybox-card-expiry-year" placeholder="expiry year" max="2" required>
+                            </div>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="paybox-card-cvv">
+                            <label for="paybox-card-cvv">Card CVV</label><br>
+                            <input type="text" id="paybox-card-cvv" name="paybox-card-cvv" placeholder="cvv" max="3" required>
+                        </div>
+                    </p>
+                    <p>
+                        <div class="paybox-card-details">
+                            <input type="submit" value="Pay Your Fees" name="paybox-card-details" id="paybox-card-details"> 
+                        </div>
+                    </p>
+            </form>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="../../js/index.js"></script>
+  </body>
+</html>
